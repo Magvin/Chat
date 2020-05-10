@@ -1,0 +1,10 @@
+@import '../../styles/variables.scss';
+@import '~antd/lib/button/style/index.css';
+
+.#{$prefix}button {
+    &.button {
+        &--large {
+            height: 56px;
+        }
+    }
+}
