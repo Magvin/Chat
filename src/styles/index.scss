@@ -1,0 +1,20 @@
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body, html, #root, .wrapper {
+    height: 100%;
+}
+
+a {
+    color: #1890ff;
+    text-decoration: none;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+    -webkit-text-decoration-skip: objects;
+}

@@ -1,0 +1,43 @@
+@import '~antd/lib/input/style/index.css';
+@import '~antd/lib/form/style/index.css';
+@import '~antd/lib/checkbox/style/index.css';
+@import '~antd/lib/icon/style/index.css';
+
+.auth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    &__top {
+        text-align: center;
+        margin-bottom: 50px;
+        h2 {
+            font-size: 24px;
+            margin-bottom: 0;
+            margin-bottom: 5px;
+        }
+        p {
+            font-size: 18px;
+            line-height: 21px;
+            letter-spacing:1;
+            opacity: 0.5;
+            
+        }
+    }
+    .chat-block {
+        width: 430px;
+    }
+    .login-form {
+        width: 430px;
+      }
+      .login-form-forgot {
+        float: right;
+      }
+      .ant-col-rtl .login-form-forgot {
+        float: left;
+      }
+      .login-form-button {
+        width: 100%;
+      }
+}
