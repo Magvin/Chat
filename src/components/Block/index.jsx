@@ -4,8 +4,11 @@ import PropTypes from 'prop-types';
 // Utils
 import { classModifier } from '../../utils/utils';
 
+// CSS
+import './Block.scss';
+
 const Block = ({ children }) => (
-  <div classNam={classModifier('block')}>{children}</div>
+  <div className={classModifier('block')}>{children}</div>
 );
 
 Block.defaultProps = {

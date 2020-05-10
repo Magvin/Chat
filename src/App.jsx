@@ -1,11 +1,15 @@
 import React from 'react';
 import Button from './components/Button';
+import Block from './components/Block';
 
 function App() {
   return (
     <div className="App">
-      <p>Hello World</p>
-      <Button size="large" type="primary">Some text</Button>
+      <Block>
+        <p>Hello World</p>
+        <Button size="large" type="primary">Some text</Button>
+      </Block>
+
     </div>
   );
 }
