@@ -2,6 +2,7 @@
 @import '~antd/lib/form/style/index.css';
 @import '~antd/lib/checkbox/style/index.css';
 @import '~antd/lib/icon/style/index.css';
+@import '../../styles/variables';
 
 .auth {
     display: flex;
@@ -29,7 +30,7 @@
         width: 430px;
     }
     .login-form {
-        width: 430px;
+        width: inherit;
       }
       .login-form-forgot {
         float: right;
@@ -38,6 +39,23 @@
         float: left;
       }
       .login-form-button {
+        font-weight: 600;
+        font-size: 14px;
+        letter-spacing: 0.1px;
         width: 100%;
+        text-transform: uppercase;
+      }
+      .login-form-register {
+        text-align: center;
+        a {
+          font-size: 16px;
+          line-height: 19px;
+          letter-spacing: 0.1px;
+          color: $grey-10;
+          
+          &:hover {
+            color: #1890ff;
+          }
+        }
       }
 }

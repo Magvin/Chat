@@ -4,12 +4,13 @@ import { Button as BaseButton } from 'antd';
 
 // Utils
 import { classModifier } from '../../utils/utils';
+import classnames from 'classnames';
 
 // CSS
 import './Button.scss';
 
 const Button = (props) => {
-  const { children, size } = props;
+  const { children, size, className } = props;
 
   const getButtonClass = (buttonSize) => {
     switch (buttonSize) {
@@ -23,7 +24,7 @@ const Button = (props) => {
   };
 
   return (
-    <BaseButton {...props} className={`${classModifier('button')} ${getButtonClass(size)}`}>
+    <BaseButton {...props} className={classnames(`${classModifier('button')} ${getButtonClass(size)}`, className)}>
       {children}
     </BaseButton>
   );
