@@ -26,6 +26,29 @@
             
         }
     }
+
+    &__success {
+      text-align: center;
+      letter-spacing: 0.1px;
+      height: 350px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+
+      .info-icon {
+        margin-bottom: 10px;
+      }
+      
+      h2 {
+        margin-bottom: 10px;
+      }
+
+      p {
+        color: $grey-10;
+        line-height: 24px;
+      }
+    }
     .chat-block {
         width: 430px;
     }
