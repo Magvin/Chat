@@ -92,6 +92,7 @@
     ]
   },
   "devDependencies": {
+    "date-fns": "^2.13.0",
     "eslint": "^6.6.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-plugin-react": "^7.19.0",
