@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import formatDistanceToNow from 'date-fns/esm/formatDistanceToNow';
+import eoLocale from 'date-fns/locale/ru';
 import classnames from 'classnames';
 
 // CSS
@@ -10,7 +11,7 @@ const Message = ({
   avatar, user, text, date,
 }) => {
   const formatDate = (d) => formatDistanceToNow(
-    new Date(d),
+    new Date(d), { locale: eoLocale, addSuffix: true },
   );
   return (
     <div className="message">
@@ -21,7 +22,9 @@ const Message = ({
         <div className="message__bubble">
           <p className="message__text">{text}</p>
         </div>
-        <span className="message__date">{formatDate(date)}</span>
+        <span className="message__date">
+          {formatDate(date)}
+        </span>
       </div>
     </div>
   );
