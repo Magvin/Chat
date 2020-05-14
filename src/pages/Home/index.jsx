@@ -9,13 +9,28 @@ export default function Home() {
         text="Салам, Брут!"
         date="Tue May 12 2020 21:16:22"
         isMe={false}
+        attachements={[
+          {
+            filename: 'image.jpg',
+            url: 'https://source.unsplash.com/100x100/?random=1&nature,water',
+          },
+          {
+            filename: 'image.jpg',
+            url: 'https://source.unsplash.com/100x100/?random=2&nature,water',
+          },
+          {
+            filename: 'image.jpg',
+            url: 'https://source.unsplash.com/100x100/?random=3&nature,water',
+          },
+        ]}
       />
       <Message
         avatar="https://wi-images.condecdn.net/image/jgov7eBrRvb/crop/2040/f/6-facial-recognition-hero.jpg"
         text="Салам, Брут!"
         date="Tue May 12 2020 22:16:22"
-        isMe={true}
+        isMe
         isReaded={false}
+
       />
     </section>
   );

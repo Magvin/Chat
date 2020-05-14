@@ -12,6 +12,25 @@
       flex-direction: column;
     }
 
+    &__info {
+      display: flex;
+    }
+
+    &__attachements {
+      display: flex;
+      margin-bottom: 10px;
+      &-item {
+        img {
+          cursor: pointer;
+          width: 45px;
+          height: 45px;
+          border-radius: 8px;
+          margin-right: 5px;
+        }
+
+      }
+    }
+
     &--isme {
       display: flex;
       flex-direction: row-reverse;

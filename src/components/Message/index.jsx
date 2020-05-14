@@ -10,7 +10,7 @@ import noReaded from '../../assets/img/noreaded.svg';
 import './Message.scss';
 
 const Message = ({
-  avatar, user, text, date, isMe, isReaded,
+  avatar, user, text, date, isMe, isReaded, attachements,
 }) => {
   const formatDate = (d) => formatDistanceToNow(
     new Date(d), { locale: eoLocale, addSuffix: true },
@@ -22,16 +22,26 @@ const Message = ({
       </div>
       <div className="message__content">
         <div className="message__info">
-          <div className="message__bubble">
-            <p className="message__text">{text}</p>
+          <div className="message__info-wrapper">
+            <div className="message__bubble">
+              <p className="message__text">{text}</p>
+            </div>
+            {(isMe && isReaded) ? <img src={readed} alt="message readed" /> : isMe ? <img src={noReaded} alt="message is not readed" /> : null }
+            <div className="message__attachements">
+              {
+              attachements
+              && attachements.map((item) => (
+                <div className="message__attachements-item" key={item.url}>
+                  <img src={item.url} alt={item.filename} />
+                </div>
+              ))
+            }
+            </div>
+            <span className="message__date">
+              {formatDate(date)}
+            </span>
           </div>
-          {(isMe && isReaded) ? <img src={readed} alt="message readed" /> : <img src={noReaded} alt="message is not readed" /> }
-          <span className="message__date">
-            {formatDate(date)}
-          </span>
         </div>
-
-
       </div>
     </div>
   );
@@ -42,6 +52,7 @@ Message.defaultProps = {
   user: { name: '' },
   text: '',
   date: '',
+  attachements: [{}],
 };
 
 Message.propTypes = {
