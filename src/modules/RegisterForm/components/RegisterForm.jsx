@@ -1,5 +1,5 @@
-/* eslint-disable prefer-promise-reject-errors */
-import React, { useState } from 'react';
+/* eslint-disable no-nested-ternary */
+import React from 'react';
 import {
   UserOutlined, LockOutlined, MailOutlined, InfoCircleTwoTone,
 } from '@ant-design/icons';
@@ -8,16 +8,19 @@ import { Form, Input } from 'antd';
 import Button from '../../../components/Button';
 import Block from '../../../components/Block';
 
-export default function RegisterForm() {
-  const [nameIsValid, setNameValid] = useState('');
-  const onFinish = (values) => {
-    if (values.length >= 4) {
-      setNameValid('success');
-    } else if (values.length < 4) {
-      setNameValid('error');
-    }
-  };
-  const success = true;
+const RegisterForm = (props) => {
+  const {
+    values,
+    touched,
+    errors,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    isValid,
+    dirty,
+  } = props;
+  const success = false;
+
   return (
     <>
       <div className="auth__top">
@@ -30,14 +33,25 @@ export default function RegisterForm() {
             name="normal_login"
             className="login-form"
             initialValues={{ remember: true }}
+            onSubmit={handleSubmit}
           >
             <Form.Item
-              name="email"
-              rules={[{ required: true, message: 'Please input your Email!' }]}
-              validateStatus={nameIsValid}
+              validateStatus={
+                !touched.email ? '' : errors.email && touched.email ? 'error' : 'success'
+              }
+              help={touched.email ? errors.email : null}
               hasFeedback
             >
-              <Input prefix={<MailOutlined className="site-form-item-icon" />} type="email" placeholder="E-mail" size="large" onChange={(event) => onFinish(event.target.value)} />
+              <Input
+                id="email"
+                prefix={<MailOutlined className="site-form-item-icon" />}
+                type="email"
+                placeholder="E-mail"
+                size="large"
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
             </Form.Item>
             <Form.Item
               name="name"
@@ -50,15 +64,20 @@ export default function RegisterForm() {
               />
             </Form.Item>
             <Form.Item
-              name="password"
-              rules={[{ required: true, message: 'Please input your password!' }]}
+              validateStatus={!touched.password ? '' : errors.password && touched.password ? 'error' : 'success'}
+              help={touched.password ? errors.password : null}
+              hasFeedback
             >
               <Input
+                id="password"
                 type="password"
                 prefix={<LockOutlined className="site-form-item-icon" />}
                 placeholder="Password"
                 size="large"
                 autoComplete="password"
+                value={values.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
             </Form.Item>
             <Form.Item
@@ -89,10 +108,8 @@ export default function RegisterForm() {
                 autoComplete="password"
               />
             </Form.Item>
-
-
             <Form.Item>
-              <Button size="large" type="primary" className="login-form-button" htmlType="submit">Зарегистрироваться</Button>
+              <Button size="large" type="primary" className="login-form-button" htmlType="submit" onClick={handleSubmit}>Зарегистрироваться</Button>
             </Form.Item>
             <Form.Item className="login-form-register">
               <Link to="/login">Войти в аккаунт</Link>
@@ -109,4 +126,6 @@ export default function RegisterForm() {
       </Block>
     </>
   );
-}
+};
+
+export default RegisterForm;

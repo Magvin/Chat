@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="wrapper">
       <Switch>
-        <Route exact path={['/', '/login']} component={Auth} />
+        <Route exact path={['/', '/login', '/register']} component={Auth} />
         <Route exact path="/im" component={Home} />
       </Switch>
     </div>
