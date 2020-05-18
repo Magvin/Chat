@@ -21,6 +21,17 @@ const RegisterForm = (props) => {
   } = props;
   const success = false;
 
+  const validationStatus = (key) => {
+    if (!touched[key]) {
+      return '';
+    } if (touched[key] && errors[key]) {
+      return 'error';
+    } if ((touched[key] && values[key]) && !errors[key]) {
+      return 'success';
+    }
+    return '';
+  };
+
   return (
     <>
       <div className="auth__top">
@@ -36,9 +47,7 @@ const RegisterForm = (props) => {
             onSubmit={handleSubmit}
           >
             <Form.Item
-              validateStatus={
-                !touched.email ? '' : errors.email && touched.email ? 'error' : 'success'
-              }
+              validateStatus={validationStatus('email')}
               help={touched.email ? errors.email : null}
               hasFeedback
             >
@@ -64,7 +73,7 @@ const RegisterForm = (props) => {
               />
             </Form.Item>
             <Form.Item
-              validateStatus={!touched.password ? '' : errors.password && touched.password ? 'error' : 'success'}
+              validateStatus={validationStatus('password')}
               help={touched.password ? errors.password : null}
               hasFeedback
             >
