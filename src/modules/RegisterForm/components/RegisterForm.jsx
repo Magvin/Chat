@@ -8,6 +8,9 @@ import { Form, Input } from 'antd';
 import Button from '../../../components/Button';
 import Block from '../../../components/Block';
 
+// Utils
+import { validationStatus } from '../../../utils/validation';
+
 const RegisterForm = (props) => {
   const {
     values,
@@ -20,17 +23,6 @@ const RegisterForm = (props) => {
     dirty,
   } = props;
   const success = false;
-
-  const validationStatus = (key) => {
-    if (!touched[key]) {
-      return '';
-    } if (touched[key] && errors[key]) {
-      return 'error';
-    } if ((touched[key] && values[key]) && !errors[key]) {
-      return 'success';
-    }
-    return '';
-  };
 
   return (
     <>
@@ -47,7 +39,7 @@ const RegisterForm = (props) => {
             onSubmit={handleSubmit}
           >
             <Form.Item
-              validateStatus={validationStatus('email')}
+              validateStatus={validationStatus('email', touched, errors, values)}
               help={touched.email ? errors.email : null}
               hasFeedback
             >
@@ -64,7 +56,6 @@ const RegisterForm = (props) => {
             </Form.Item>
             <Form.Item
               name="name"
-              rules={[{ required: true, message: 'Please input your name!' }]}
             >
               <Input
                 prefix={<UserOutlined className="site-form-item-icon" />}
@@ -73,7 +64,7 @@ const RegisterForm = (props) => {
               />
             </Form.Item>
             <Form.Item
-              validateStatus={validationStatus('password')}
+              validateStatus={validationStatus('password', touched, errors, values)}
               help={touched.password ? errors.password : null}
               hasFeedback
             >

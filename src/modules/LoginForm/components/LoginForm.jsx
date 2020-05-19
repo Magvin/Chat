@@ -1,20 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Link } from 'react-router-dom';
 import { Form, Input } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import Button from '../../../components/Button';
 import Block from '../../../components/Block';
+import { validationStatus } from '../../../utils/validation';
 
-export default function LoginForm() {
-  const [nameIsValid, setNameValid] = useState('');
-  const onFinish = (values) => {
-    if (values.length >= 4) {
-      setNameValid('success');
-    } else if (values.length < 4) {
-      setNameValid('error');
-    }
-  };
+const LoginForm = (props) => {
+  const {
+    values,
+    touched,
+    errors,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    isValid,
+    dirty,
+  } = props;
   return (
     <>
       <div className="auth__top">
@@ -28,29 +31,35 @@ export default function LoginForm() {
           initialValues={{ remember: true }}
         >
           <Form.Item
-            name="username"
-            rules={[{ required: true, message: 'Please input your Username!' }]}
-            validateStatus={nameIsValid}
+            validateStatus={validationStatus('username', touched, errors, values)}
             hasFeedback
           >
-            <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" size="large" onChange={(event) => onFinish(event.target.value)} />
+            <Input
+              id="username"
+              prefix={<UserOutlined className="site-form-item-icon" />}
+              placeholder="Username"
+              size="large"
+              value={values.username}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
           </Form.Item>
           <Form.Item
-            name="password"
-            rules={[{ required: true, message: 'Please input your Password!' }]}
+            validateStatus={validationStatus('password', touched, errors, values)}
+            help={touched.password ? errors.password : null}
+            hasFeedback
           >
             <Input
+              id="password"
               prefix={<LockOutlined className="site-form-item-icon" />}
               type="password"
               placeholder="Password"
               size="large"
+              value={values.password}
+              onChange={handleChange}
+              onBlur={handleBlur}
             />
           </Form.Item>
-          {/* <Form.Item>
-              <a className="login-form-forgot" href="">
-                Забыл пароль
-              </a>
-            </Form.Item> */}
 
           <Form.Item>
             <Button size="large" type="primary" className="login-form-button" htmlType="submit">Войти в аккаунт</Button>
@@ -63,4 +72,6 @@ export default function LoginForm() {
       </Block>
     </>
   );
-}
+};
+
+export default LoginForm;
