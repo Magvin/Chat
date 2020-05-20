@@ -24,6 +24,7 @@
     ],
     "rules": {
         "react/jsx-props-no-spreading": "off",
-        "react/prop-types": "warn"
+        "react/prop-types": "warn",
+        "no-nested-ternary": "off"
     }
 }

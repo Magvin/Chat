@@ -8,7 +8,6 @@ export default function Home() {
         avatar="https://images.unsplash.com/photo-1537815749002-de6a533c64db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1090&q=80"
         text="Салам, Брут!"
         date="Tue May 12 2020 21:16:22"
-        isMe={false}
         attachements={[
           {
             filename: 'image.jpg',
@@ -31,6 +30,20 @@ export default function Home() {
         isMe
         isReaded={false}
 
+      />
+      <Message
+        avatar="https://images.unsplash.com/photo-1537815749002-de6a533c64db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1090&q=80"
+        isTyping
+      />
+      <Message
+        avatar="https://images.unsplash.com/photo-1537815749002-de6a533c64db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1090&q=80"
+        date="Tue May 12 2020 22:16:22"
+        attachements={[
+          {
+            filename: 'image.jpg',
+            url: 'https://source.unsplash.com/100x100/?random=1&nature,water',
+          },
+        ]}
       />
     </section>
   );

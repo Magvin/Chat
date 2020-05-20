@@ -15,8 +15,6 @@ const LoginForm = (props) => {
     handleChange,
     handleBlur,
     handleSubmit,
-    isValid,
-    dirty,
   } = props;
   return (
     <>
@@ -29,6 +27,7 @@ const LoginForm = (props) => {
           name="normal_login"
           className="login-form"
           initialValues={{ remember: true }}
+          onSubmit={handleSubmit}
         >
           <Form.Item
             validateStatus={validationStatus('username', touched, errors, values)}
@@ -62,7 +61,7 @@ const LoginForm = (props) => {
           </Form.Item>
 
           <Form.Item>
-            <Button size="large" type="primary" className="login-form-button" htmlType="submit">Войти в аккаунт</Button>
+            <Button size="large" type="primary" className="login-form-button" htmlType="submit" onClick={handleSubmit}>Войти в аккаунт</Button>
           </Form.Item>
           <Form.Item className="login-form-register">
             <Link to="/register">Зарегистрироваться!</Link>
