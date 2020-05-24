@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import readed from '../../assets/img/readed.svg';
 import noReaded from '../../assets/img/noreaded.svg';
 
@@ -11,5 +13,14 @@ const MessageIsReaded = ({ isReaded, isMe }) => (
 
 );
 
+
+MessageIsReaded.defaultProps = {
+  isReaded: false,
+  isMe: false,
+};
+MessageIsReaded.propTypes = {
+  isReaded: PropTypes.bool,
+  isMe: PropTypes.bool,
+};
 
 export default MessageIsReaded;

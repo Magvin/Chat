@@ -2,6 +2,7 @@
 
 .item {
     &__avatar {
+        display: inline-flex; // removes 4px
         img {
         border-radius: 50px;
         width: 33px;

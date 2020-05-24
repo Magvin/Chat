@@ -1,10 +1,10 @@
 import React from 'react';
-import { Message } from '../../components';
+import { ContactListItem } from '../../components';
 
 export default function Home() {
   return (
     <section className="home">
-      {/* <ContactListItem /> */}
+      <ContactListItem />
       {/* <ContactList item={[
         {
           user: {
@@ -19,7 +19,7 @@ export default function Home() {
         },
       ]}
       />  */}
-      <Message
+      {/* <Message
         avatar="https://images.unsplash.com/photo-1537815749002-de6a533c64db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1090&q=80"
         text="Салам, Брут!"
         date="Tue May 12 2020 21:16:22"
@@ -43,8 +43,7 @@ export default function Home() {
         text="Салам, Брут!"
         date="Tue May 12 2020 22:16:22"
         isMe
-        isReaded={false}
-
+        isReaded
       />
       <Message
         avatar="https://images.unsplash.com/photo-1537815749002-de6a533c64db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1090&q=80"
@@ -59,7 +58,7 @@ export default function Home() {
             url: 'https://source.unsplash.com/100x100/?random=1&nature,water',
           },
         ]}
-      />
+      /> */}
     </section>
   );
 }
