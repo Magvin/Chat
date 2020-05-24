@@ -4,6 +4,21 @@ import { Message } from '../../components';
 export default function Home() {
   return (
     <section className="home">
+      {/* <ContactListItem /> */}
+      {/* <ContactList item={[
+        {
+          user: {
+            fullName: 'Фёдор Достоевский',
+            avatar: 'https://images.unsplash.com/photo-1537815749002-de6a533c64db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1090&q=80',
+          },
+          message: {
+            text: 'Мы все свидетельствуем, а не пытаемся победить',
+            isReaded: false,
+            created_at: new Date(),
+          },
+        },
+      ]}
+      />  */}
       <Message
         avatar="https://images.unsplash.com/photo-1537815749002-de6a533c64db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1090&q=80"
         text="Салам, Брут!"

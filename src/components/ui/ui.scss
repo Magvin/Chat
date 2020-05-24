@@ -1,0 +1,18 @@
+@import '../../styles/variables';
+
+.item {
+    &__avatar {
+        img {
+        border-radius: 50px;
+        width: 33px;
+        height: 33px;
+        object-fit: cover;
+        }
+    }
+
+    &__date {
+        font-size: 12px;
+        color: $black-10;
+        opacity: 0.5;
+    }
+}

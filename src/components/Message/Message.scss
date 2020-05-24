@@ -72,14 +72,8 @@
     &__avatar {
       display: flex;
       flex-direction: column-reverse;
-        img {
-          border-radius: 50px;
-          width: 33px;
-          height: 33px;
-          object-fit: cover;
-        }
-        margin-right: 13px;
-        margin-bottom: 17px;
+      margin-right: 13px;
+      margin-bottom: 17px;
     }
     
     &__bubble {
@@ -125,12 +119,6 @@
           animation: 1s blink infinite 0.9999s; 
         }
       }
-    }
-
-    &__date {
-      font-size: 12px;
-      color: $black-10;
-      opacity: 0.5;
     }
 }
 

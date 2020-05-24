@@ -1,34 +1,27 @@
 import React from 'react';
 import PropTypes, { bool } from 'prop-types';
-import formatDistanceToNow from 'date-fns/esm/formatDistanceToNow';
-import eoLocale from 'date-fns/locale/ru';
 import classnames from 'classnames';
-import readed from '../../assets/img/readed.svg';
-import noReaded from '../../assets/img/noreaded.svg';
 
 // CSS
 import './Message.scss';
+import Avatar from '../ui/avatar';
+import CovertDate from '../ui/date';
+import MessageIsReaded from '../ui/messageIsReaded';
 
 const Message = ({
   avatar, user, text, date, isMe, isReaded, attachements, isTyping,
-}) => {
-  const formatDate = (d) => formatDistanceToNow(
-    new Date(d), { locale: eoLocale, addSuffix: true },
-  );
-  return (
-    <div className={classnames('message',
-      {
-        'message--isme': isMe,
-        'message-is--typing': isTyping,
-      })}
-    >
-      <div className="message__avatar">
-        <img src={avatar} alt={`Avatar of ${user.fullname}`} />
-      </div>
-      <div className="message__content">
-        <div className="message__info">
-          <div className="message__info-wrapper">
-            {(text || isTyping) && (
+}) => (
+  <div className={classnames('message',
+    {
+      'message--isme': isMe,
+      'message-is--typing': isTyping,
+    })}
+  >
+    <Avatar avatar={avatar} alt={`Avatar of ${user.fullname}`} className="message__avatar" />
+    <div className="message__content">
+      <div className="message__info">
+        <div className="message__info-wrapper">
+          {(text || isTyping) && (
             <div className="message__bubble">
               {text && <p className="message__text">{text}</p>}
               {isTyping
@@ -40,10 +33,10 @@ const Message = ({
                 </div>
                 )}
             </div>
-            )}
-            {(isMe && isReaded) ? <img src={readed} alt="message readed" /> : isMe ? <img src={noReaded} alt="message is not readed" /> : null }
-            <div className="message__attachements">
-              {
+          )}
+          <MessageIsReaded isMe={isMe} isReaded={isReaded} />
+          <div className="message__attachements">
+            {
               attachements
               && attachements.map((item, index, array) => (
                 <div
@@ -55,18 +48,15 @@ const Message = ({
                 </div>
               ))
             }
-            </div>
-            {date && (
-            <span className="message__date">
-              {formatDate(date)}
-            </span>
-            )}
           </div>
+          {date && (
+          <CovertDate date={date} className="message__date" />
+          )}
         </div>
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 Message.defaultProps = {
   avatar: '',
