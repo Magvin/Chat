@@ -4,7 +4,7 @@ import { ContactListItem } from '../../components';
 export default function Home() {
   return (
     <section className="home">
-      <ContactListItem />
+      <ContactListItem incomingMessage messages="2" isOnline />
       {/* <ContactList item={[
         {
           user: {
