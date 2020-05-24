@@ -7,3 +7,7 @@
 - Axios
 - PassportJs
 - Formik
+
+## Backend ##
+- Deno (to be considered)
+- Postgresql (to be considered)
