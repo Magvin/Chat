@@ -9,7 +9,7 @@ import CovertDate from '../ui/date';
 import MessageIsReaded from '../ui/messageIsReaded';
 
 const ContactListItem = ({
-  className, incomingMessage, messages, isOnline,
+  className, incomingMessage, messages, isOnline, name
 }) => (
   <div className={classnames('contact-list__item', className)}>
     <div className={classnames('contact-list__item-avatar', isOnline ? 'contact-list__item-avatar--isOnline' : null)}>
@@ -18,7 +18,7 @@ const ContactListItem = ({
     </div>
     <div className="contact-list__item-info">
       <div className="contact-list__item-info-top">
-        <b>Фёдор Достоевский</b>
+        <b>{name}</b>
         <span>
           <CovertDate date={new Date()} />
         </span>

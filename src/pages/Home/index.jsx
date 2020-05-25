@@ -1,10 +1,15 @@
 import React from 'react';
-import { ContactListItem } from '../../components';
+import { ContactList} from '../../components';
 
 export default function Home() {
   return (
     <section className="home">
-      <ContactListItem incomingMessage messages="2" isOnline />
+      <ContactList list={[
+        {
+          isOnline: true,
+          name: 'Фёдор Достоевский'
+        }
+      ]}/>
       {/* <ContactList item={[
         {
           user: {
