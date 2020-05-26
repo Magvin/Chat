@@ -3,10 +3,10 @@ import classnames from 'classnames';
 
 import './ui.scss';
 
-export default function Avatar({ user, avatar, className }) {
+export default function Avatar({ alt, avatar, className }) {
   return (
     <div className={classnames('item__avatar', className)}>
-      <img src={avatar} alt={`Avatar of ${user}`} />
+      <img src={avatar} alt={`Avatar of ${alt}`} />
     </div>
   );
 }

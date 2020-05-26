@@ -9,29 +9,28 @@ import CovertDate from '../ui/date';
 import MessageIsReaded from '../ui/messageIsReaded';
 
 const ContactListItem = ({
-  className, incomingMessage, messages, isOnline, name
+  className, message, user, isMe,
 }) => (
   <div className={classnames('contact-list__item', className)}>
-    <div className={classnames('contact-list__item-avatar', isOnline ? 'contact-list__item-avatar--isOnline' : null)}>
-      {/* <img src={user.avatar} alt={`${user.fullName}`} /> */}
-      <Avatar avatar="https://images.unsplash.com/photo-1537815749002-de6a533c64db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1090&q=80" alt="Фёдор Достоевский" />
+    <div className={classnames('contact-list__item-avatar', user.isOnline ? 'contact-list__item-avatar--isOnline' : null)}>
+      <Avatar avatar={user.avatar} alt={user.name} />
     </div>
     <div className="contact-list__item-info">
       <div className="contact-list__item-info-top">
-        <b>{name}</b>
+        <b>{user.name}</b>
         <span>
-          <CovertDate date={new Date()} />
+          <CovertDate relative date={message.created_at} />
         </span>
       </div>
       <div className="contact-list__item-info-bottom">
-        <p>Мы все свидетельствуем Вам глубочайшее наше почтение и ценностей</p>
-        {(incomingMessage && messages) ? (
+        <p>{message.text}</p>
+        {(message.text && message.messagesRecieved) ? (
           <span className="contact-list__item-notification">
-            {messages}
+            {message.messagesRecieved}
           </span>
         )
           : (
-            <MessageIsReaded isMe />
+            <MessageIsReaded isMe={isMe} isReaded={message.isReaded} isSent={message.messageSent} />
           )}
 
       </div>
@@ -40,15 +39,19 @@ const ContactListItem = ({
 );
 
 ContactListItem.defaultProps = {
+  user: '',
+  message: '',
   className: '',
-  messages: '',
-  incomingMessage: false,
+  messagesRecieved: '',
   isOnline: false,
+  isMe: false,
 };
 ContactListItem.propTypes = {
+  user: PropTypes.oneOfType([PropTypes.object]),
+  message: PropTypes.oneOfType([PropTypes.object]),
   className: PropTypes.string,
-  messages: PropTypes.string,
-  incomingMessage: PropTypes.bool,
+  messagesRecieved: PropTypes.string,
   isOnline: PropTypes.bool,
+  isMe: PropTypes.bool,
 };
 export default ContactListItem;

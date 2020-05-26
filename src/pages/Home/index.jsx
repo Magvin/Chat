@@ -1,15 +1,45 @@
 import React from 'react';
-import { ContactList} from '../../components';
+import { ContactList } from '../../components';
 
 export default function Home() {
   return (
     <section className="home">
-      <ContactList list={[
-        {
-          isOnline: true,
-          name: 'Фёдор Достоевский'
-        }
-      ]}/>
+      <ContactList
+        ownerId="2"
+        list={[
+          {
+            id: '1',
+            message: {
+              text: 'Привет, как твои дела?',
+              messageSent: true,
+              created_at: 'Sun May 16 2020 21:16:55',
+              isReaded: false,
+            },
+            user: {
+              id: '2',
+              isOnline: true,
+              name: 'Фёдор Достоевский',
+              avatar: 'https://images.unsplash.com/photo-1537815749002-de6a533c64db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1090&q=80',
+            },
+          },
+          {
+            id: '2',
+            message: {
+              text: 'Мы все свидетельствуем Вам глубочайшее наше почтение и ценностей',
+              messageSent: false,
+              created_at: 'Sat May 23 2020 21:16:55',
+              messagesRecieved: '2',
+            },
+            user: {
+              id: '3',
+              isOnline: false,
+              name: 'Алан Тюринг',
+              avatar: 'https://www.denofgeek.com/wp-content/uploads/2016/11/avatar-sequel.jpg?resize=768%2C432',
+
+            },
+          },
+        ]}
+      />
       {/* <ContactList item={[
         {
           user: {
