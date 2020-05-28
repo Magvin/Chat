@@ -1,10 +1,10 @@
 import React from 'react';
-import { ContactList } from '../../components';
+import { Message } from '../../components';
 
 export default function Home() {
   return (
     <section className="home">
-      <ContactList
+      {/* <ContactList
         ownerId="2"
         list={[
           {
@@ -39,21 +39,12 @@ export default function Home() {
             },
           },
         ]}
+      /> */}
+      <Message
+        avatar="https://images.unsplash.com/photo-1537815749002-de6a533c64db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1090&q=80"
+        date="Tue May 12 2020 21:16:22"
+        audio="https://notificationsounds.com/soundfiles/996a7fa078cc36c46d02f9af3bef918b/file-sounds-1149-goes-without-saying.wav"
       />
-      {/* <ContactList item={[
-        {
-          user: {
-            fullName: 'Фёдор Достоевский',
-            avatar: 'https://images.unsplash.com/photo-1537815749002-de6a533c64db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1090&q=80',
-          },
-          message: {
-            text: 'Мы все свидетельствуем, а не пытаемся победить',
-            isReaded: false,
-            created_at: new Date(),
-          },
-        },
-      ]}
-      />  */}
       {/* <Message
         avatar="https://images.unsplash.com/photo-1537815749002-de6a533c64db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1090&q=80"
         text="Салам, Брут!"

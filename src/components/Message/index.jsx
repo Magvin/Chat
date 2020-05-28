@@ -7,9 +7,10 @@ import './Message.scss';
 import Avatar from '../ui/avatar';
 import CovertDate from '../ui/date';
 import MessageIsReaded from '../ui/messageIsReaded';
+import Audio from '../audio/Audio';
 
 const Message = ({
-  avatar, user, text, date, isMe, isReaded, attachements, isTyping,
+  avatar, user, text, date, isMe, isReaded, attachements, isTyping, audio,
 }) => (
   <div className={classnames('message',
     {
@@ -17,11 +18,12 @@ const Message = ({
       'message-is--typing': isTyping,
     })}
   >
+    {console.log(audio)}
     <Avatar avatar={avatar} alt={`Avatar of ${user.fullname}`} className="message__avatar" />
     <div className="message__content">
       <div className="message__info">
         <div className="message__info-wrapper">
-          {(text || isTyping) && (
+          {(text || isTyping || audio) && (
             <div className="message__bubble">
               {text && <p className="message__text">{text}</p>}
               {isTyping
@@ -31,6 +33,9 @@ const Message = ({
                   <span />
                   <span />
                 </div>
+                )}
+                {audio && (
+                  <Audio src={audio} />
                 )}
             </div>
           )}
@@ -63,6 +68,7 @@ Message.defaultProps = {
   user: { name: '' },
   text: '',
   date: '',
+  audio: '',
   isMe: false,
   isReaded: false,
   attachements: [],
@@ -82,6 +88,7 @@ Message.propTypes = {
       url: PropTypes.string,
     }),
   ),
+  audio: PropTypes.string,
   isTyping: bool,
 };
 

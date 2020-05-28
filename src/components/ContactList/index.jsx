@@ -3,7 +3,7 @@ import OrderBy from 'lodash/orderBy';
 import { ContactListItem } from '..';
 
 
-const ContactList = ({ list, ownerId }) => (OrderBy(list, ['message.created_at'], ['asc']).map(({
+const ContactList = ({ list, ownerId }) => (OrderBy(list, ['message.created_at'], ['desc']).map(({
   user, message, _id,
 }) => (
   <ContactListItem

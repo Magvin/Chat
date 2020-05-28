@@ -1,0 +1,49 @@
+@function randomNum($min, $max) {
+    $rand: random();
+    $randomNum: $min + floor($rand * (($max - $min) + 1));
+  
+    @return $randomNum;
+  }
+.message__audio {
+    width: 200px;
+    height: 50px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    .audio {
+        &__play {
+            cursor: pointer;
+            color: white;
+            margin-right: 15px;
+            outline: none;
+            svg {
+                width: 25px;
+                height: 25px;
+            }
+        }
+        &__track {
+            list-style: none;
+            height: 10px;
+            display: flex;
+            justify-content: right;
+            align-items: center;
+            height: 50px;
+            li {
+                margin-right: 5px;
+                border:2px solid white;
+                border-radius: 5px;
+            }
+
+            li:nth-child(even) {
+                height:  #{randomNum(20, 25)}px;
+            }
+            li:nth-of-type(odd) {
+                height:  #{randomNum(30, 40)}px;
+            }
+
+            li:nth-child(4n-7) {
+                height:  #{randomNum(5, 10)}px;
+            }
+        }
+    }
+}
