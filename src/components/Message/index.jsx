@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes, { bool } from 'prop-types';
 import classnames from 'classnames';
 
@@ -11,20 +11,23 @@ import Audio from '../audio/Audio';
 
 const Message = ({
   avatar, user, text, date, isMe, isReaded, attachements, isTyping, audio,
-}) => (
-  <div className={classnames('message',
-    {
-      'message--isme': isMe,
-      'message-is--typing': isTyping,
-    })}
-  >
-    {console.log(audio)}
-    <Avatar avatar={avatar} alt={`Avatar of ${user.fullname}`} className="message__avatar" />
-    <div className="message__content">
-      <div className="message__info">
-        <div className="message__info-wrapper">
-          {(text || isTyping || audio) && (
-            <div className="message__bubble">
+}) => {
+
+
+  return (
+    <div className={classnames('message',
+      {
+        'message--isme': isMe,
+        'message-is--typing': isTyping,
+        'message-have--audio': audio,
+      })}
+    >
+      <Avatar avatar={avatar} alt={`Avatar of ${user.fullname}`} className="message__avatar" />
+      <div className="message__content">
+        <div className="message__info">
+          <div className="message__info-wrapper">
+            {(text || isTyping || audio) && (
+            <div className={classnames('message__bubble', audio ? 'audio' : null)}>
               {text && <p className="message__text">{text}</p>}
               {isTyping
                 && (
@@ -38,10 +41,10 @@ const Message = ({
                   <Audio src={audio} />
                 )}
             </div>
-          )}
-          <MessageIsReaded isMe={isMe} isReaded={isReaded} />
-          <div className="message__attachements">
-            {
+            )}
+            <MessageIsReaded isMe={isMe} isReaded={isReaded} />
+            <div className="message__attachements">
+              {
               attachements
               && attachements.map((item, index, array) => (
                 <div
@@ -53,15 +56,16 @@ const Message = ({
                 </div>
               ))
             }
+            </div>
+            {date && (
+            <CovertDate date={date} className="message__date" />
+            )}
           </div>
-          {date && (
-          <CovertDate date={date} className="message__date" />
-          )}
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 Message.defaultProps = {
   avatar: '',

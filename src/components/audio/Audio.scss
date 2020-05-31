@@ -10,6 +10,8 @@
     display: flex;
     justify-content: right;
     align-items: center;
+    position: relative;
+    z-index: 2;
     .audio {
         &__play {
             cursor: pointer;
@@ -28,6 +30,11 @@
             justify-content: right;
             align-items: center;
             height: 50px;
+            &.audio__track--playing {
+                li {
+                    border-color: black;
+                }
+            }
             li {
                 margin-right: 5px;
                 border:2px solid white;

@@ -82,6 +82,8 @@
       border-radius: 12px 12px 12px 0px;
       padding: 10px 12px;
       margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
     }
 
     &__text {
