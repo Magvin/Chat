@@ -5,7 +5,7 @@
     @return $randomNum;
   }
 .message__audio {
-    width: 200px;
+    width: 225px;
     height: 50px;
     display: flex;
     justify-content: right;
@@ -51,6 +51,10 @@
             li:nth-child(4n-7) {
                 height:  #{randomNum(5, 10)}px;
             }
+        }
+        &__time {
+            color: white;
+            font-weight: 600;
         }
     }
 }
