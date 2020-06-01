@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import React, { useRef, useEffect, useState } from 'react';
-import { CaretRightOutlined } from '@ant-design/icons';
 import classnames from 'classnames';
+import wave from '../../assets/img/wave.svg';
 
 import './Audio.scss';
 
@@ -11,10 +11,17 @@ const Audio = ({ src }) => {
 
   const [audioWidth, setAudioWidth] = useState(0);
   const [audioCurrentTime, setCurrentTime] = useState(null);
+  const [audioPlaying, setAudioPlaying] = useState(false);
 
   const playAudio = () => {
     audioDuration = audio.current.duration;
-    audio.current.play();
+    if (audioPlaying === false) {
+      setAudioPlaying(true);
+      audio.current.play();
+    } else if (audioPlaying === true) {
+      setAudioPlaying(false);
+      audio.current.pause();
+    }
   };
   function setAudioTime(time) {
     let settedTime;
@@ -34,36 +41,18 @@ const Audio = ({ src }) => {
     });
     audio.current.addEventListener('timeupdate', () => {
       setAudioTime('currentTime');
-      setAudioWidth((100 - Math.round(200 / (audioDuration - audio.current.currentTime))));
+      setAudioWidth((10 - Math.round((audioDuration - audio.current.currentTime))));
     });
   }, []);
 
   return (
-    <div className="message__audio audio--playing">
-      <CaretRightOutlined className="audio__play" role="button" onClick={() => playAudio()} />
+    <>
+      <div className="message__audio audio--playing" style={{ width: audioWidth > 0 ? `calc(${audioWidth}% + 14.5%)` : '0px', padding: audioWidth > 0 ? '10px 12px' : '0px' }} />
+      <button className={classnames('audio__button', audioPlaying ? 'audio__button--pause' : 'audio__button--play')} onClick={() => playAudio()} type="button"> </button>
       <audio ref={audio} src={src} preload="metadata" />
-      <ul className={classnames('audio__track', audioWidth > 0 ? 'audio__track--playing' : null)} style={{ clipPath: `inset(0px ${audioWidth}% 0px 0px)` }}>
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-      </ul>
+      <img className="audio__wave" src={wave} alt="wave" />
       <span className="audio__time">{audioCurrentTime}</span>
-    </div>
+    </>
   );
 };
 

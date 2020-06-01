@@ -1,60 +1,66 @@
+@import '../../styles/variables';
 @function randomNum($min, $max) {
     $rand: random();
     $randomNum: $min + floor($rand * (($max - $min) + 1));
   
     @return $randomNum;
   }
-.message__audio {
-    width: 225px;
+
+.audio {
+    width: 250px;
     height: 50px;
     display: flex;
-    justify-content: right;
+    justify-content: space-around;
     align-items: center;
-    position: relative;
-    z-index: 2;
-    .audio {
-        &__play {
-            cursor: pointer;
-            color: white;
-            margin-right: 15px;
-            outline: none;
-            svg {
-                width: 25px;
-                height: 25px;
-            }
-        }
-        &__track {
-            list-style: none;
-            height: 10px;
-            display: flex;
-            justify-content: right;
-            align-items: center;
-            height: 50px;
-            &.audio__track--playing {
-                li {
-                    border-color: black;
-                }
-            }
-            li {
-                margin-right: 5px;
-                border:2px solid white;
-                border-radius: 5px;
-            }
+    
 
-            li:nth-child(even) {
-                height:  #{randomNum(20, 25)}px;
-            }
-            li:nth-of-type(odd) {
-                height:  #{randomNum(30, 40)}px;
-            }
+    &__button {
+        cursor: pointer;
+        color: white;
+        background: transparent;
+        outline: none;
+        border: none;
+        margin-right: 15px;
+        z-index: 2;
 
-            li:nth-child(4n-7) {
-                height:  #{randomNum(5, 10)}px;
-            }
+        &--play {
+            border-left: 15px solid white;
+            border-bottom: 15px solid transparent;
+            transform: rotate(135deg);
         }
-        &__time {
-            color: white;
-            font-weight: 600;
+
+        &--pause {
+            &::before {
+                content: '';
+                width: 5px;
+                height: 21px;
+                display: block;
+                border-left: 5px solid white;
+                border-right: 5px solid white;
+            }
         }
     }
+
+    &__time {
+        color: white;
+        font-weight: 600;
+        z-index: 2;
+    }
+
+    &__wave {
+        width: 165px;
+        z-index: 2;
+    }
+
+    &--playing {
+        position: absolute;
+        height: inherit;
+        left: 0;
+        border-radius: 12px 12px 12px 0px;
+        padding: 10px 12px;
+        background: #6796ff;
+        opacity: 0.7;
+    }
+}
+.message__audio {
 }
