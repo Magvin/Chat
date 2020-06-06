@@ -9,6 +9,18 @@
         height: 33px;
         object-fit: cover;
         }
+        &--no-avatar {
+            span {
+                width: 40px;
+                height: 40px;
+                border-radius: 50px;
+                text-align: center;
+                line-height: 40px;
+                font-size: 20px;
+                color: white;
+                font-weight: 500;
+            }
+        }
     }
 
     &__date {

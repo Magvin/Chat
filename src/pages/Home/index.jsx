@@ -1,10 +1,10 @@
 import React from 'react';
-import { Message } from '../../components';
+import { ContactList } from '../../components';
 
 export default function Home() {
   return (
     <section className="home">
-      {/* <ContactList
+      <ContactList
         ownerId="2"
         list={[
           {
@@ -31,20 +31,21 @@ export default function Home() {
               messagesRecieved: '2',
             },
             user: {
-              id: '3',
+              id: 'b068931cc450442b63f5b3d276ea4297',
               isOnline: false,
               name: 'Алан Тюринг',
-              avatar: 'https://www.denofgeek.com/wp-content/uploads/2016/11/avatar-sequel.jpg?resize=768%2C432',
+              avatar: '',
 
             },
           },
         ]}
-      /> */}
-      <Message
+      />
+      {/* <Message
+
         avatar="https://images.unsplash.com/photo-1537815749002-de6a533c64db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1090&q=80"
         date="Tue May 12 2020 21:16:22"
         audio="https://notificationsounds.com/soundfiles/eb6fdc36b281b7d5eabf33396c2683a2/file-sounds-1158-lovingly.wav"
-      />
+      /> */}
       {/* <Message
         avatar="https://images.unsplash.com/photo-1537815749002-de6a533c64db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1090&q=80"
         text="Салам, Брут!"

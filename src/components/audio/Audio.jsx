@@ -7,14 +7,13 @@ import './Audio.scss';
 
 const Audio = ({ src }) => {
   const audio = useRef();
-  let audioDuration = 0;
+
 
   const [audioWidth, setAudioWidth] = useState(0);
   const [audioCurrentTime, setCurrentTime] = useState(null);
   const [audioPlaying, setAudioPlaying] = useState(false);
 
   const playAudio = () => {
-    audioDuration = audio.current.duration;
     if (audioPlaying === false) {
       setAudioPlaying(true);
       audio.current.play();
@@ -40,14 +39,19 @@ const Audio = ({ src }) => {
       setAudioTime('duration');
     });
     audio.current.addEventListener('timeupdate', () => {
+      const duration = (audio.current && audio.current.duration) || 0;
       setAudioTime('currentTime');
-      setAudioWidth((10 - Math.round((audioDuration - audio.current.currentTime))));
+      setAudioWidth(((audio.current.currentTime / duration) * 100));
+    });
+    audio.current.addEventListener('ended', () => {
+      setAudioWidth(0);
+      setAudioPlaying(false);
     });
   }, []);
 
   return (
     <>
-      <div className="message__audio audio--playing" style={{ width: audioWidth > 0 ? `calc(${audioWidth}% + 14.5%)` : '0px', padding: audioWidth > 0 ? '10px 12px' : '0px' }} />
+      <div className="message__audio audio--playing" style={{ width: audioWidth ? `calc(${audioWidth}% - 24px)` : '0px', padding: audioWidth > 0 ? '10px 12px' : '0px' }} />
       <button className={classnames('audio__button', audioPlaying ? 'audio__button--pause' : 'audio__button--play')} onClick={() => playAudio()} type="button"> </button>
       <audio ref={audio} src={src} preload="metadata" />
       <img className="audio__wave" src={wave} alt="wave" />

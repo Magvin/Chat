@@ -13,7 +13,7 @@ const ContactListItem = ({
 }) => (
   <div className={classnames('contact-list__item', className)}>
     <div className={classnames('contact-list__item-avatar', user.isOnline ? 'contact-list__item-avatar--isOnline' : null)}>
-      <Avatar avatar={user.avatar} alt={user.name} />
+      <Avatar avatar={user.avatar} alt={user.name} id={user.id} name={user.name} />
     </div>
     <div className="contact-list__item-info">
       <div className="contact-list__item-info-top">
