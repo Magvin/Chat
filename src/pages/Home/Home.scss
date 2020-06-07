@@ -1,0 +1,39 @@
+.chat {
+    display: flex;
+    &__log {
+        display: flex;
+        padding: 5px 2px 5px 5px;
+        justify-content: space-between;
+        border: 3px solid white;
+        background: white;
+        border-radius: 5px;
+        margin-bottom: 5px;
+    }
+    &__contact-list {
+        height: 100vh;
+        background: white;
+    }
+    &__search {
+        display: flex;
+        justify-content: center;
+        padding: 5px 0;
+        background: white;
+        input {
+            width: 260px;
+            border: 1px solid #e8e8e8;
+            background: #e8e8e8;
+            height: 25px;
+            border-radius: 10px;
+            &::placeholder {
+                text-align: center;
+            }
+        }
+    }
+    &__active-section {
+        display: block;
+        width: 100%;
+        margin: 0 5px;
+        background: white;
+
+    }
+}

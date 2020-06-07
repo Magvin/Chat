@@ -6,7 +6,6 @@ import './ui.scss';
 export default function Avatar({
   alt, avatar, className, id, name,
 }) {
-  console.log(`backgroundColor: #${id.slice(0, 5)}`);
   const getAvatarOrPlaceholder = () => {
     if (avatar.length > 1) {
       return (
